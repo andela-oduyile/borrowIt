@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  requestedBy: one
+  ownedBy: one
+  status: MyString
+
+two:
+  requestedBy: two
+  ownedBy: two
+  status: MyString

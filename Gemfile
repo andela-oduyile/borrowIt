@@ -20,6 +20,7 @@ gem 'puma', '~> 3.7'
 gem 'pg'
 gem 'figaro'
 gem 'jwt'
+gem 'rack-cors'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

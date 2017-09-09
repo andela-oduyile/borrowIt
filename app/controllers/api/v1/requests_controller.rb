@@ -40,7 +40,7 @@ module Api
       private
 
         def request_params
-          params.permit(:requestedBy_id, :ownedBy_id, :status, :item, :return_state, :owner_comment)
+          params.permit(:requestedBy_id, :ownedBy_id, :status, :item, :description, :return_state, :owner_comment)
         end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909080318) do
+ActiveRecord::Schema.define(version: 20170909092736) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20170909080318) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "requestedBy_id"
-    t.integer "ownedBy_id"
+    t.integer "requested_by_id"
+    t.integer "owned_by_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170909080318) do
     t.boolean "return_state", default: false
     t.datetime "returned_at"
     t.string "owner_comment"
-    t.index ["ownedBy_id"], name: "index_requests_on_ownedBy_id"
-    t.index ["requestedBy_id"], name: "index_requests_on_requestedBy_id"
+    t.index ["owned_by_id"], name: "index_requests_on_owned_by_id"
+    t.index ["requested_by_id"], name: "index_requests_on_requested_by_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170909080318) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "provider_id"
   end
 
 end

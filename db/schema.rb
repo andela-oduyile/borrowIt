@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909092736) do
+ActiveRecord::Schema.define(version: 20170909142521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170909092736) do
     t.boolean "return_state", default: false
     t.datetime "returned_at"
     t.string "owner_comment"
+    t.text "description"
     t.index ["owned_by_id"], name: "index_requests_on_owned_by_id"
     t.index ["requested_by_id"], name: "index_requests_on_requested_by_id"
   end

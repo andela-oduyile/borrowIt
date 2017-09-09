@@ -8,7 +8,7 @@ module Api
                       data: {
                         name: user.name,
                         email: user.email,
-                        provider_id: user.provider_id
+                        id: user.id
                       }
                     }
       end

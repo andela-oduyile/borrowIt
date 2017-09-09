@@ -5,5 +5,6 @@ Rails.application.routes.draw do
       get 'user/:id', to: 'users#show'
     end
   end
+  root 'welcome#index'
   get '/auth/:provider/callback', to: 'sessions#create', as: :sign_in_callback
 end

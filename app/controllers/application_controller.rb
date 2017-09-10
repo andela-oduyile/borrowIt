@@ -3,7 +3,11 @@ class ApplicationController < ActionController::API
 
   private
     def authenticate_user!
-      valid_request? || unauthorized!
+      if auth.authenticated?
+        current_user
+      else
+        unauthorized!
+      end
     end
 
     def unauthorized!
@@ -11,23 +15,11 @@ class ApplicationController < ActionController::API
       render json: {errors: "Request was made with an invalid token"}, status: 401
     end
 
-    def valid_request?
-      @current_user ||= User.find_by(id: user_hash["user"]) if reqd_params_present?
-    end
-
-    def token
-      @_token ||= params[:token]
-    end
-
-    def user_hash
-      @_user_hash ||= JWTService.authenticate(token)
-    end
-
-    def reqd_params_present?
-      token.present? && user_hash.present?
+    def auth
+      @_auth ||= Authenticator.new(request)
     end
 
     def current_user
-      @current_user ||= User.find_by(id: user_hash["user"])
+      @current_user ||= User.find_by(id: auth.user)
     end
 end

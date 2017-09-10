@@ -10,7 +10,12 @@ Rails.application.routes.draw do
           put :accept
         end
       end
-      get 'user/:id', to: 'users#show'
+
+      resources :users, only: :show do
+        collection do
+          get :me
+        end
+      end
     end
   end
   root 'welcome#index'

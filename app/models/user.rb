@@ -7,6 +7,7 @@ class User < ApplicationRecord
       find_or_initialize_by(provider_id: user_hash[:provider_id] ) do |user|
         user.name = user_hash[:name]
         user.email = user_hash[:email]
+        user.profile_image = user_hash[:profile_image]
 
         user.save
       end

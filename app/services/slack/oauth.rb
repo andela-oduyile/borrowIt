@@ -66,7 +66,8 @@ class Slack::Oauth
       {
         provider_id: user["id"],
         name: user["name"],
-        email: user["email"]
+        email: user["email"],
+        profile_image: user["image_192"]
       }
     end
 

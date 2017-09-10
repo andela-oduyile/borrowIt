@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
-      resources :requests
+      resources :requests do
+        collection do
+          get :leased
+        end
+
+        member do
+          put :accept
+        end
+      end
       get 'user/:id', to: 'users#show'
     end
   end

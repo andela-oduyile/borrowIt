@@ -12,7 +12,7 @@ This project aims to solve that problem by creating an online platform where an 
 ## Technology Stack
 
 - Ruby / Ruby on Rails
-- React JS
+- Javascript / React
 
 ## Authors
 

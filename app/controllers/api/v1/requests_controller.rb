@@ -15,7 +15,7 @@ module Api
       def create
         request = request_scope.new(request_params)
         if request.save
-          slack_notifier.ping "*Borrow-It Notifications* \n *New Request*\n *Item*: #{request.item} \n *Comment*: #{request.description} \n *Visit:* [https://borrowit.herokuapp.com/](https://borrowit.herokuapp.com/)"
+          slack_notifier.ping "*Borrow-It Notifications* \n *New Request*\n *Item*: #{request.item} \n *Comment*: #{request.description}\n *Requester*: <@#{current_user.provider_id}>  \n *Visit:* [#{FRONTEND_CONFIG.url}](#{FRONTEND_CONFIG.url})"
 
           render json: { message: "Created the request", data: serialize_request(request)}
         else

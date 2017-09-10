@@ -3,4 +3,5 @@ class Request < ApplicationRecord
   belongs_to :borrower, :class_name => 'User', :foreign_key => 'requested_by_id'
 
   scope :unaccepted, -> { where(owner: nil) }
+  scope :not_returned, -> { where(returned_at: nil) }
 end

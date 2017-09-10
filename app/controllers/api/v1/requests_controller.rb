@@ -15,6 +15,8 @@ module Api
       def create
         request = request_scope.new(request_params)
         if request.save
+          slack_notifier.ping "*Borrow-It Notifications* \n *New Request*\n *Item*: #{request.item} \n *Comment*: #{request.description} \n *Visit:* [https://borrowit.herokuapp.com/](https://borrowit.herokuapp.com/)"
+
           render json: { message: "Created the request", data: request}
         else
           render json: { message: "Oops! an error occured while trying to create the request", data: request }

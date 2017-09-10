@@ -21,6 +21,8 @@ gem 'pg'
 gem 'figaro'
 gem 'jwt'
 gem 'rack-cors'
+gem "slack-notifier"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909142521) do
+ActiveRecord::Schema.define(version: 20170910065217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20170909142521) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "requested_by_id"
-    t.integer "owned_by_id"
+    t.bigint "requested_by_id"
+    t.bigint "owned_by_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170909142521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider_id"
+    t.string "profile_image"
   end
 
 end

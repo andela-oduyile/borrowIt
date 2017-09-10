@@ -17,7 +17,8 @@ module Api
             data: {
                     name: user.name,
                     email: user.email,
-                    id: user.id
+                    id: user.id,
+                    profile_image: user.profile_image
                   }
           }
 

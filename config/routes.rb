@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :requests do
         collection do
           get :leased
+          get :borrowed
         end
 
         member do

@@ -15,7 +15,8 @@ module Api
       def create
         request = request_scope.new(request_params)
         if request.save
-          slack_notifier.ping "*Borrow-It Notifications* \n *New Request*\n *Item*: #{request.item} \n *Comment*: #{request.description}\n *Requester*: <@#{current_user.provider_id}>  \n *Visit:* [#{FRONTEND_CONFIG.url}](#{FRONTEND_CONFIG.url})"
+          request_url = FRONTEND_CONFIG.url + "/#{request.id}"
+          slack_notifier.ping "*Borrow-It Notifications* \n *New Request*\n *Item*: #{request.item} \n *Comment*: #{request.description}\n *Requester*: <@#{current_user.provider_id}>  \n *Visit:* [#{request_url}](#{request_url})"
 
           render json: { message: "Created the request", data: serialize_request(request)}
         else
@@ -49,6 +50,12 @@ module Api
         requests = current_user.owned_items.not_returned
 
         render json: { message: "Fetching all items given out", data: serialize_request(requests) }
+      end
+
+      def borrowed
+        requests = current_user.borrowed_items.not_returned
+
+        render json: { message: "Fetching all items borrowed", data: serialize_request(requests) }
       end
 
 

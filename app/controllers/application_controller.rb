@@ -27,4 +27,9 @@ class ApplicationController < ActionController::API
       @_notifier ||= Slack::Notifier.new ENV["WEBHOOK_URL"], channel: "#borrow-it",
                                                            username: "borrow-it"
     end
+
+    def slack_notifier_user(user)
+      @_notifier ||= Slack::Notifier.new ENV["WEBHOOK_URL"], channel: user,
+                                                           username: "borrow-it"
+    end
 end

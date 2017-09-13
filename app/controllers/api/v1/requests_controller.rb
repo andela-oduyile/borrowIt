@@ -42,6 +42,7 @@ module Api
       def accept
         request = Request.includes(:borrower, :owner).find(params[:id])
         request.update(owner: current_user)
+        slack_notifier_user(request.borrower.provider_id).ping "*Borrow-It Notifications* \n *Request Confirmation*: Your request for item #{request.item} has been accepted by <@#{@current_user.provider_id}> "
 
         render json: { message: "Accepted the request", data: serialize_request(request) }
       end
